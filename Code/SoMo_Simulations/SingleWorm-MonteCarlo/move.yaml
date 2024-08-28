@@ -1,0 +1,33 @@
+# Top-level settings
+settings:
+    traj_type: 'interp'  # Types include: 'waveform', 'interp', 'direct'
+
+
+# Place all of the type-specific settings in here
+config:
+    interp_type: linear   # Types include: 'linear', 'cubic', 'none'
+    subsample_num: 90 #Total number of subsamples
+    setpoints:
+        # [time, act0_ax0, act0_ax1, act1_ax0, act1_ax1, act2_ax0, ... ]   # act0 is closest to the base
+        main:
+            - [ 2.0, -175,    0 ]
+            - [ 3.0, -175,    0 ]
+            - [ 7.0,   0,    0 ]
+            - [ 8.0,   0,    0 ]
+            - [10.0,   0,  750]
+            - [11.0,   0,  750]
+            - [15.0,   0,    0]
+            - [16.0,   0,    0]
+            - [18.0, -175,    0]
+            - [19.0, -175,    0]
+            - [23.0,   0,    0]
+            - [24.0,   0,    0]
+            - [26.0,   0,  -750]
+            - [27.0,   0,  -750]
+            - [31.0,   0,    0]
+            - [32.0,   0,    0]
+
+        prefix:
+            - [2.0,  0,  0]
+        suffix:
+            - [2.0,  0,  0]

@@ -1,0 +1,92 @@
+# Manipulator Definition
+
+# Author: Tobias Geissenberger
+# Date:   03/06/2024
+# Description:
+#     This worm definition is used for simulating the collective locomotion of worm-like soft robots
+
+# NOTE: Remember to scale your geometry, stiffnesses, positions, and forces
+# by the global scaling factor; no need to scale masses.
+
+manipulator_name:      "worm"
+urdf_filename:         "worm.urdf"
+n_act:                  2
+
+# Define the actuators. this is a list of 5 actuator definitions
+actuator_definitions:
+
+  # Actuator 0
+  - actuator_length: 5
+    n_segments: 10
+    planar_flag: 0
+
+    # Define the link sub-unit for each actuator
+    # The link height (z-dimension) times n_segments must equal the actuator length
+    link_definition:
+        shape_type: "stadium"
+        dimensions: [ 0.5,0.5,0.5 ]
+        mass: 0.2
+        inertial_values: [ 1, 0, 0, 1, 0, 1 ]
+        material_color: [ 0.3, 0.0, 1, 1.0 ]
+        material_name: "blue"
+
+    joint_definitions:
+        # Define joint type 1
+        - joint_type: "revolute"
+          axis: [ 1, 0, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+        # Define joint type 2
+        - joint_type: "revolute"
+          axis: [ 0, 1, 0 ]
+          limits: [ -3.141592, 3.141592, 100, 3 ]
+          spring_stiffness: 1000
+          joint_neutral_position: 0
+          joint_control_limit_force: 1.
+
+  # Actuator 1
+  - actuator_length: 11
+    n_segments: 22
+    planar_flag: 0
+
+    # Define the link sub-unit for each actuator
+    # The link height (z-dimension) times n_segments must equal the actuator length
+    link_definition:
+      shape_type: "stadium"
+      dimensions: [ 0.5,0.5,0.5 ]
+      mass: 0.2
+      inertial_values: [ 1, 0, 0, 1, 0, 1 ]
+      material_color: [ 0.3, 0.0, 1, 1.0 ]
+      material_name: "blue"
+
+    joint_definitions:
+      # Define joint type 1
+      - joint_type: "revolute"
+        axis: [ 1, 0, 0 ]
+        limits: [ -3.141592, 3.141592, 100, 3 ]
+        spring_stiffness: 1000
+        joint_neutral_position: 0
+        joint_control_limit_force: 1.
+
+      # Define joint type 2
+      - joint_type: "revolute"
+        axis: [ 0, 1, 0 ]
+        limits: [ -3.141592, 3.141592, 100, 3 ]
+        spring_stiffness: 1000
+        joint_neutral_position: 0
+        joint_control_limit_force: 1.
+
+# Define the base link
+base_definition:
+  shape_type: "box"
+  dimensions: [ 0.5, 0.5, 0.1]
+  mass: 3
+  inertial_values: [ 1000, 0, 0, 1000, 0, 1000 ]
+  material_color: [ 0.3, 0.0, 1, 1.0 ]
+  material_name: "blue"
+
+# Define the tip link. For fingers, use this to define the fingertip.
+tip_definition: "" # this means no tip link
